@@ -1,0 +1,54 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    All Meetings
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="panel-heading text-center"> <h1>All meetings</h1></div>
+    {% for msg in get_flashed_messages() %}
+    <div class="flash text-info">{{msg}}</div>
+    {% endfor %}
+
+    <div >
+        <table class="table">
+            <thead>
+            <tr>
+
+                <th scope="col">Meeting Room</th>
+                <th scope="col">Employee</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">End Time</th>
+                <th scope="col">Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for elem in meeting %}
+            <tr>
+
+                <td>{{elem.mroom}}</td>
+                <td>{{elem.employee}}</td>
+                <td>{{elem.stime[11:16]}} in {{elem.stime[0:10]}} </td>
+                <td>{{elem.etime[11:16]}} in {{elem.etime[0:10]}} </td>
+                <td>
+                    <form>
+                        <a href="/meetings/update/{{elem.id}}" class="btn btn-link" data-toggle="tooltip" data-placement="top" title="update">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <a href="/meetings/delete/{{elem.id}}" class="btn btn-link"  onclick="myFunction()" data-toggle="tooltip" data-placement="top" title="remove">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
+                    </form>
+                 </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+
+{% endblock %}

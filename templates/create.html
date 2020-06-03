@@ -1,0 +1,82 @@
+    {% extends 'index.html' %}
+
+    {% block title %}
+    New Meeting
+    {% endblock %}
+
+    {% block content %}
+
+    <div class="panel-heading text-center"> <h1>Create meeting</h1></div>
+   <form method="post">
+      <div class="panel-body">
+         <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label" for="mroom">Meting Room </label>
+                  <div class='input-group '>
+                      <select id="mroom" name="mroom" class="custom-select form-control" required >
+                          <option selected value="no room was selected">Choose Room</option>
+                          <option value="First">First</option>
+                          <option value="Second">Second</option>
+                          <option value="Тhird">Тhird</option>
+                          <option value="Fourth">Fourth</option>
+                          <option value="Fifth">Fifth</option>
+                      </select>
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-home"></span>
+                      </span>
+                  </div>
+               </div>
+            </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label" for="employee">Employee </label>
+                  <div class='input-group'>
+                     <input type='text' class="form-control" name="employee" id="employee" placeholder="Employee" required/>
+                     <span class="input-group-addon">
+                     <span class="glyphicon glyphicon-user"></span>
+                     </span>
+                  </div>
+               </div>
+            </div>
+          </div>
+
+         <div class="row">
+            <div class="col-md-6">
+               <div class="form-group">
+                  <label class="control-label" for="stime">Start Time</label>
+                  <div class='input-group' >
+                     <input type="datetime-local" lang="en" value="2020-01-01T14:00"class="form-control" name="stime" id="stime" required >
+                  </div>
+               </div>
+            </div>
+            <div class='col-md-6'>
+               <div class="form-group">
+                  <label class="control-label" for="etime">End Time</label>
+                  <div class='input-group'>
+                     <input type="datetime-local" lang="en" value="2020-01-01T15:00"class="form-control" name="etime" id="etime"  required>
+
+                  </div>
+               </div>
+            </div>
+         </div>
+
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <div class="text-left">
+                     <input type="submit" class="btn btn-primary btn-lg btn-block" value="OK">
+                      </div>
+                  </div>
+              </div>
+               <div class="col-md-6">
+                   <div class="form-group">
+                      <div class="text-right">
+                           <input type="reset" class="btn btn-primary btn-lg btn-block" value="Cancel">
+                      </div>
+                   </div>
+               </div>
+          </div>
+      </div>
+   </form>
+    {% endblock %}
