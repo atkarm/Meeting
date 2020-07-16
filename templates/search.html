@@ -1,0 +1,83 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    Search result
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="panel-heading text-center"> <h1>Search result</h1></div>
+    {% for msg in get_flashed_messages() %}
+    <div class="flash text-info">{{msg}}</div>
+    {% endfor %}
+
+    <div >
+        <table class="table">
+            <thead>
+            <tr>
+
+                <th scope="col">Meeting Room</th>
+                <th scope="col">Employee</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">End Time</th>
+                <th scope="col">Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for elem in meeting %}
+            <tr>
+
+                <td>{{elem.mroom}}</td>
+                <td>{{elem.employee}}</td>
+                <td>{{elem.stime[11:16]}} in {{elem.stime[0:10]}} </td>
+                <td>{{elem.etime[11:16]}} in {{elem.etime[0:10]}} </td>
+                <td>
+                    <form>
+                        <!--      Update               -->
+                        <a href="/meetings/update/{{elem.id}}" class="btn btn-link" data-toggle="tooltip" data-placement="top" title="update">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <!--        Delete             -->
+                        <a type="button" class="btn btn-link" data-toggle="modal" data-target="#DeleteModal" title="remove">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+
+                    <!-- Modal -->
+                    <div class="modal fade collapse " id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div  class="modal-dialog modal-dialog-centered modal-sm " role="document">
+                            <div class="modal-content">
+                                <div class="modal-header bg-primary ">
+                                    <h3 class="modal-title " id="exampleModalLabel">Confirm delete.</h3>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    Are you sure ?
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="/meetings/delete/{{elem.id}}" class="btn btn-primary"  onclick="myFunction()" data-toggle="tooltip" data-placement="top" title="remove">
+                                       Yes         </a>
+                                    <a type="button" class="btn btn-primary" data-dismiss="modal">Cancel</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </form>
+                 </td>
+                <td>
+
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+
+{% endblock %}
