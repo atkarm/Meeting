@@ -126,12 +126,10 @@ def update(id):
 
      # validate End time for update page
         if validator_etime(stime=request.form['stime'],etime=request.form['etime']):
-            meeting.stime = request.form['etime']
+            meeting.etime = request.form['etime']
         else:
-            flash('Invalid Start Time', 'error')
+            flash('Invalid End Time', 'error')
             return redirect(request.url)
-
-        meeting.etime = request.form['etime']
 
         if request.form['mroom'] and request.form['employee'] and request.form['stime'] and request.form['stime']:
             flash("Thank you. Your meeting has been updated. ")

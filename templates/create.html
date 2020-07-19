@@ -38,7 +38,7 @@
                      <span class="glyphicon glyphicon-user"></span>
                      </span>
                   </div>
-                    <div>
+                    <div name="flashemp">
                      {% for msg in get_flashed_messages() %}
                      <div class="flash text-danger">{{msg}}<a href="#" data-toggle="modal" data-target="#whyemp"> Why?</a></div>
                      {% endfor %}
@@ -54,26 +54,22 @@
                <div class="form-group">
                   <label class="control-label" for="stime">Start Time</label>
                   <div class='input-group' >
-                     <input type="datetime-local" lang="en" class="form-control" value="2021-01-01T14:00"  name="stime" id="stime" required >
+                     <input type="datetime-local" lang="en" class="form-control"  value="2021-02-03T14:00" name="stime" id="stime" required >
                   </div>
-                   <div>
-                       {% with messages = get_flashed_messages() %}
-                            {% if messages %}
-                                {% for msg in get_flashed_messages() %}
+                   <div name="flashstime">
+                       {% for msg in get_flashed_messages() %}
                                 <div class="flash text-danger">{{msg}}<a href="#" data-toggle="modal" data-target="#whystime"> Why?</a></div>
-                                {% endfor %}
-                            {% endif %}
-                       {% endwith %}
-                 </div>
+                       {% endfor %}
+                   </div>
                </div>
             </div>
             <div class='col-md-6'>
                <div class="form-group">
                   <label class="control-label" for="etime">End Time</label>
                   <div class='input-group'>
-                     <input type="datetime-local" lang="en" class="form-control" value="2021-01-01T15:00" name="etime" id="etime"  required>
+                     <input type="datetime-local" lang="en" class="form-control" value="2021-02-03T15:00" name="etime" id="etime"  required>
                   </div>
-                   <div>
+                   <div name="flashetime">
                    {% for msg in get_flashed_messages() %}
                    <div class="flash text-danger">{{msg}}<a href="#" a href="#" data-toggle="modal" data-target="#whyetime"> Why?</a></div>
                    {% endfor %}
@@ -86,7 +82,7 @@
               <div class="col-md-6">
                   <div class="form-group">
                       <div class="text-left">
-                     <input type="submit" class="btn btn-primary btn-lg btn-block" value="OK">
+                     <input type="submit" class="btn btn-primary btn-lg btn-block" value="OK" name="OK">
                       </div>
                   </div>
               </div>
@@ -164,5 +160,10 @@
     </div>
   </div>
 </div>
-
+    <script>
+    function myFunction() {
+        var x = document.getElementById("myLocalDate").min = "2006-05-05T16:15:23";
+            document.getElementById("demo").innerHTML = "The value of the min attribute was changed from '2000-10-06T22:22:55' to '2006-05-05T16:15:23'.";
+            }
+</script>
     {% endblock %}

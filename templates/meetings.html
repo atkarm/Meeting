@@ -32,18 +32,18 @@
                 <td>{{elem.stime[11:16]}} in {{elem.stime[0:10]}} </td>
                 <td>{{elem.etime[11:16]}} in {{elem.etime[0:10]}} </td>
                 <td>
-                    <form>
+
                         <!--      Update               -->
-                        <a href="/meetings/update/{{elem.id}}" class="btn btn-link" data-toggle="tooltip" data-placement="top" title="update">
+                        <a href="/meetings/update/{{elem.id}}" class="btn btn-link" data-toggle="tooltip" data-placement="top" title="update" name="updatemeet">
                             <span class="glyphicon glyphicon-edit"></span>
                         </a>
                         <!--        Delete             -->
-                        <a type="button" class="btn btn-link" data-toggle="modal" onclick="myFunction()" data-target="#DeleteModal" title="remove">
+                        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#DeleteModal" title="remove">
                         <span class="glyphicon glyphicon-remove"></span>
-                        </a>
+                        </button>
 
  <!-- Modal -->
-                    <div class="modal fade collapse " id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal fade collapse " id="DeleteModal" tabindex="1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                         <div  class="modal-dialog modal-dialog-centered modal-sm " role="document">
                             <div class="modal-content">
                                 <div class="modal-header bg-primary ">
@@ -53,16 +53,16 @@
                                     Are you sure remove meeting for {{elem.employee}}?
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="/meetings/delete/{{elem.id}}" class="btn btn-primary"  data-toggle="tooltip"  title="remove">
-                                       Yes         </a>
-                                    <a type="button" class="btn btn-primary" data-dismiss="modal">Cancel</a>
-
+<!--                                    action="{{url_for('delete', id= elem.id)}}"-->
+                                    <form method="post">
+                                        <a class="btn btn-primary" href="/meetings/delete/{{elem.id}}"  data-toggle="tooltip"  title="remove" type="submit" value="Yes">Yes</a>
+                                    </form>
+                                    <a type="button" class="btn btn-primary" data-dismiss="modal">No</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    </form>
                  </td>
                 <td>
 
